@@ -1,3 +1,4 @@
+import Movies from '@/components/Movies';
 import React from 'react'
 
 const Page = async({searchParams}) => {
@@ -8,9 +9,16 @@ const Page = async({searchParams}) => {
   const data = await res.json();
   console.log(data, "data")
   return (
-    <h1 className="">
-    Veri Çekme Alanı
-    </h1>
+    <div className="flex items-center justify-center flex-wrap gap-3">
+      {
+        data.results.map((item, index) => (
+          <Movies key={index} item={item}/>
+
+        ))
+
+      }
+    
+    </div>
   )
 }
 
